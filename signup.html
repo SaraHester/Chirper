@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/10a5b7cff7.js"></script>
+
+    <link rel='stylesheet' href='stylesheet.css'>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class='container'>
+            <!-- <div class='jumbotron'> -->
+
+            <ul class="nav navbar-nav">
+                <li><a href=''>Home</a>
+                </li>
+                <li><a href="">Moments</a></li>
+            </ul>
+            <ul style="list-style: none;">
+                <li class='col-sm-6 title'>&emsp;&emsp;Chirper</li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><button id='showSearch' onclick='showSearch()'>Search<i class="fa fa-search" aria-hidden="true"></i></button></li>
+                <li><a href="">Sign Up<i class="fa fa-user-o" aria-hidden="true"></i></a></li>
+                <input id='searchBox' type='text' hidden>
+                <button id='search' hidden></button>
+            </ul>
+        </div>
+        </div>
+        <!-- </div> -->
+    </nav>
+    <div id='whiteSpace'>
+        <br>
+    </div>
+    <center>
+
+        <div class='container'>
+
+            <div class="input-group  input-lg col-xs-4">
+                <span style='background-color: blue' class="input-group-addon"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i></span>
+                <input id='username-input' class="form-control input-lg" type="text" placeholder="Username">
+            </div>
+            <ul id='username-errors'></ul>
+            <div class="input-lg input-group  col-xs-4">
+                <span style='background-color: blue' class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                <input id='email-input' class="form-control input-lg" type="text" placeholder="Email address">
+            </div>
+            <ul id='email-errors'></ul>
+
+            <div class="input-group input-lg col-xs-4">
+                <span style='background-color: blue' class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                <input id='passsword-input' class="form-control input-lg" type="password" placeholder="Password">
+            </div>
+            <ul id='password-errors'></ul>
+            <div class="input-group input-lg col-xs-4">
+                <span style='background-color: blue' class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                <input id='repeat-password-input' class="form-control input-lg" type="password" placeholder="Re-enter Password">
+            </div>
+            <ul id='repeat-password-errors'></ul>
+            <button id='signUp' type="button" class="btn btn-primary btn-lg">Sign Up</button>
+        </div>
+    </center>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='signup.js'>
+
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 var PAGE_DATA = {};
+
 var months = [
     'Janurary',
     'Feburary',
@@ -139,9 +140,23 @@ function writeInfo() {
         "<p><i class='fa fa-picture-o' aria-hidden='true'></i>&emsp;<a href=''>Photos and Videos</a></p>"
     );
 }
+function writeYma() {
+    for (i = 0; i < PAGE_DATA.youMayAlsoLike.length; i++) {
+        $('#yma').append(
+            '<hr><div id="ymaperson"><img src="' +
+                PAGE_DATA.youMayAlsoLike[i].picUrl +
+                '"> <div id="ymainfo">' +
+                PAGE_DATA.youMayAlsoLike[i].name +
+                '<br>' +
+                PAGE_DATA.youMayAlsoLike[i].username +
+                '</div></div>'
+        );
+    }
+}
 function draw() {
     writeInfo();
     writeChirps();
+    writeYma();
 }
 function main() {
     var xhttp = new XMLHttpRequest();
@@ -152,7 +167,38 @@ function main() {
             PAGE_DATA = xhttp.responseText;
             console.log(PAGE_DATA);
             PAGE_DATA = JSON.parse(PAGE_DATA);
-            PAGE_DATA;
+            PAGE_DATA.youMayAlsoLike = [
+                {
+                    name: 'David Beasly',
+                    username: '@dabeaz',
+                    picUrl:
+                        'https://pbs.twimg.com/profile_images/848508178639749120/x8ltNamO_bigger.jpg'
+                },
+                {
+                    name: 'Guido van Rossum',
+                    username: '@gvanrossum',
+                    picUrl:
+                        'https://pbs.twimg.com/profile_images/424495004/GuidoAvatar_bigger.jpg'
+                },
+                {
+                    name: 'Brandon Rhodes',
+                    username: '@brandon_rhodes',
+                    picUrl:
+                        'https://pbs.twimg.com/profile_images/378800000204519400/f6f79294738b8b6afa67dd21c5463633_bigger.jpeg'
+                },
+                {
+                    name: 'Python Software',
+                    username: '@ThePSF',
+                    picUrl:
+                        'https://pbs.twimg.com/profile_images/439154912719413248/pUBY5pVj_bigger.png'
+                },
+                {
+                    name: 'Pycoders Weekly',
+                    username: '@pycoders',
+                    picUrl:
+                        'https://pbs.twimg.com/profile_images/429285908953579520/InZKng9-_bigger.jpeg'
+                }
+            ];
 
             draw();
         } else {
@@ -162,4 +208,5 @@ function main() {
     xhttp.open('GET', 'https://bcca-chirper.herokuapp.com/api/raymondh/', true);
     xhttp.send();
 }
+
 $(main);

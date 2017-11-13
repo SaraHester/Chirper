@@ -11,54 +11,43 @@
         crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://use.fontawesome.com/10a5b7cff7.js"></script>
-    </script>
+
     <link rel='stylesheet' href='stylesheet.css'>
 
 </head>
 
 <body>
-    <nav>
-        <div id="title">
-            <div id='left'>
-                <a href="">
-        
-        <i class="fa fa-rss" aria-hidden="true"></i>
-                            <!-- <i class="fa fa-hashtag" aria-hidden="true"></i> -->
-                        </i>Home</a>
-                <a href=""></i>
-                        Moments</a>
-            </div>
-            <p>Chirper
-                <i class="fa fa-rss" aria-hidden="true"></i>
-                <!-- <i class="fa fa-hashtag" aria-hidden="true"></i> -->
-                </i>
-            </p>
-            <!-- Use
-                                  <code>PAGE_DATA</code> to recreate a minimal copycat of
-                                    <a href="https://twitter.com/raymondh">a twitter feed</a> -->
+    <!-- <nav> -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class='container'>
+            <!-- <div class='jumbotron'> -->
 
+            <ul class="nav navbar-nav">
+                <li><a href=''>Home</a>
+                </li>
+                <li><a href="">Moments</a></li>
+            </ul>
+            <ul style="list-style: none;">
+                <li class='col-sm-6 title'>&emsp;&emsp;Chirper</li>
+            </ul>
 
-            <div id='right'>
-                <input type='text' placeholder='Search'><a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
-                <a href="">Login
-                    <i class="fa fa-user-o" aria-hidden="true"></i></a>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href=''>Search<i class="fa fa-search" aria-hidden="true"></i></a></li>
+                <li><a href="signup.html">Sign Up<i class="fa fa-user-o" aria-hidden="true"></i></a></li>
+            </ul>
         </div>
-
-
-
+        </div>
+        <!-- </div> -->
     </nav>
-
     <div id='whiteSpace'>
-        <hr>
+        <br>
     </div>
-    <div id='window' class='container'>
-        <div id='data' class='container'>
-            <div id='info' class='container'></div>
-            <div id='chirps' class='container'>
-
-            </div>
-
+    <div class='container'>
+        <div class='row'>
+            <div id='info' class='container col-sm-3'></div>
+            <div id='chirps' class='container col-sm-6'></div>
+            <div class='col-sm-1'></div>
+            <div id='yma' class='container col-sm-2'>You May Also Like</div>
         </div>
 
     </div>
