@@ -21,25 +21,41 @@
         <div class='container'>
             <!-- <div class='jumbotron'> -->
 
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-left">
                 <li><a href=''>Home</a>
                 </li>
                 <li><a href="">Moments</a></li>
             </ul>
             <ul style="list-style: none;">
-                <li class='col-sm-6 title'>&emsp;&emsp;Chirper</li>
+                <li class='col-sm-5 title'>&emsp;&emsp;Chirper</li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><button id='showSearch' onclick='showSearch()'>Search<i class="fa fa-search" aria-hidden="true"></i></button></li>
-                <li><a href="">Sign Up<i class="fa fa-user-o" aria-hidden="true"></i></a></li>
-                <input id='searchBox' type='text' hidden>
-                <button id='search' hidden></button>
+                <li>
+
+                    <input id='searchBox' type='text'></li>
+                <li><button id='search'><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <!-- <button id='showSearch' onclick='showSearch()'>Search<i class="fa fa-search" aria-hidden="true"></i></button> -->
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="dropbtn">Account
+                          <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href='#'>Sign Up</a>
+                            <a href='#'>Log In</a>
+                        </div>
+                    </div>
+                    <!-- <a href="">Sign Up<i class="fa fa-user-o" aria-hidden="true"></i></a> -->
+                </li>
+
             </ul>
         </div>
         </div>
         <!-- </div> -->
     </nav>
+
     <div id='whiteSpace'>
         <br>
     </div>

@@ -15,11 +15,12 @@ var months = [
     'December'
 ];
 function postNewChirp() {
+    console.log(PAGE_DATA);
     var d = new Date();
     chirp = {
         author: {
-            name: 'Raymond Hettinger',
-            username: 'raymondh'
+            name: PAGE_DATA.chirper.name,
+            username: PAGE_DATA.chirper.username
         },
         date: {
             month: d.getMonth() + 1,
@@ -103,41 +104,33 @@ function writeChirps() {
     );
 }
 function writeInfo() {
-    $('#info').append(
-        '<div id="photo" ><img src=""></div>'
-        //  + PAGE_DATA.chirper.picUrl +
-    );
-    $('#info').append(
-        "<h2><a target='_blank' href='https://twitter.com/" +
+    $('#info').html(
+        '<div id="photo" ><img src=""></div>' +
+            "<h2><a target='_blank' href='https://twitter.com/" +
             PAGE_DATA.chirper.username +
             "'>" +
             PAGE_DATA.chirper.name +
-            '</a></h2>'
-    );
-    $('#info').append('<p>@' + PAGE_DATA.chirper.username + '</p>');
-
-    $('#info').append('<p>' + PAGE_DATA.chirper.description + '</p>');
-    $('#info').append(
-        '<p><i class="fa fa-map-marker" aria-hidden="true"></i>&emsp;' +
+            '</a></h2>' +
+            '<p>@' +
+            PAGE_DATA.chirper.username +
+            '</p>' +
+            '<p>' +
+            PAGE_DATA.chirper.description +
+            '</p>' +
+            '<p><i class="fa fa-map-marker" aria-hidden="true"></i>&emsp;' +
             PAGE_DATA.chirper.location +
-            '</p>'
-    );
-    $('#info').append(
-        "<p><i class='fa fa-link' aria-hidden='true'></i>&emsp;<a target='_blank' href='https://" +
+            '</p>' +
+            "<p><i class='fa fa-link' aria-hidden='true'></i>&emsp;<a target='_blank' href='https://" +
             PAGE_DATA.chirper.website +
             "'>" +
             PAGE_DATA.chirper.website +
-            '</a></p>'
-    );
-    $('#info').append(
-        '<p><i class="fa fa-calendar" aria-hidden="true"></i>&emsp;Joined: ' +
+            '</a></p>' +
+            '<p><i class="fa fa-calendar" aria-hidden="true"></i>&emsp;Joined: ' +
             months[PAGE_DATA.chirper.joined.month - 1] +
             ' ' +
             PAGE_DATA.chirper.joined.year +
-            '</p>'
-    );
-    $('#info').append(
-        "<p><i class='fa fa-picture-o' aria-hidden='true'></i>&emsp;<a href=''>Photos and Videos</a></p>"
+            '</p>' +
+            "<p><i class='fa fa-picture-o' aria-hidden='true'></i>&emsp;<a href=''>Photos and Videos</a></p>"
     );
 }
 function writeYma() {
@@ -208,5 +201,34 @@ function main() {
     xhttp.open('GET', 'https://bcca-chirper.herokuapp.com/api/raymondh/', true);
     xhttp.send();
 }
-
+$('#search').click(function() {
+    search_username = $('#searchBox').val();
+    // take search-area id and see if the username exists.
+    // maybe console.log it for later
+    $.get(
+        'https://bcca-chirper.herokuapp.com/api/username_exists/' +
+            search_username +
+            '/'
+    )
+        .then(function handleFeedResponse(response) {
+            if (response.exists === true) {
+                console.log("It's True!");
+                $.get(
+                    'https://bcca-chirper.herokuapp.com/api/' +
+                        search_username +
+                        '/'
+                ).then(function(feed) {
+                    PAGE_DATA = feed;
+                    console.log(search_username);
+                    draw();
+                    chirpybox();
+                });
+            } else {
+                console.log('It does not exist!');
+            }
+        })
+        .catch(function handleFeedReason(reason) {
+            console.log('Failure:', reason);
+        });
+});
 $(main);

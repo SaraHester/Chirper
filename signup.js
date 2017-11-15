@@ -45,7 +45,7 @@ function showSearch() {
         $('#showSearch').css('color', 'blue');
         $('#searchBox').removeAttr('hidden');
         $('#search').removeAttr('hidden');
-    } else if ($('#showAddChirp').css('color') === 'rgb(0, 0, 255)') {
+    } else if ($('#showSearch').css('color') === 'rgb(0, 0, 255)') {
         $('#showSearch').html(
             'Search  <i class="fa fa-search" aria-hidden="true"></i>'
         );
@@ -121,4 +121,34 @@ function attachHandlers() {
 function main() {
     attachHandlers();
 }
+$('#search').click(function() {
+    search_username = $('#searchBox').val();
+    // take search-area id and see if the username exists.
+    // maybe console.log it for later
+    $.get(
+        'https://bcca-chirper.herokuapp.com/api/username_exists/' +
+            search_username +
+            '/'
+    )
+        .then(function handleFeedResponse(response) {
+            if (response.exists === true) {
+                console.log("It's True!");
+                $.get(
+                    'https://bcca-chirper.herokuapp.com/api/' +
+                        search_username +
+                        '/'
+                ).then(function(feed) {
+                    PAGE_DATA = feed;
+                    console.log(search_username);
+                    draw();
+                    chirpybox();
+                });
+            } else {
+                console.log('It does not exist!');
+            }
+        })
+        .catch(function handleFeedReason(reason) {
+            console.log('Failure:', reason);
+        });
+});
 $(main);
